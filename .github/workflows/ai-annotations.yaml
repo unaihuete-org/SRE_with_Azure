@@ -1,3 +1,4 @@
+name: ai-annotations
 on:
   workflow_dispatch:
   push:

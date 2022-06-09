@@ -1,0 +1,18 @@
+on:
+  workflow_dispatch:
+  push:
+    branches: 
+      - ai-annotations 
+    
+jobs:
+  ai-annotations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: APP Insights ai-annotations
+        uses: unaihuete-org/application-insights-annotate@v1
+        with:
+          applicationId: ${{ secrets.APP_INSIGHTS_ID}}
+          apiKey: ${{ secrets..APP_INSIGHTS_KEY}}
+          releaseName: ${{ github.event_name }}
+          message: ${{ github.event.head_commit.message }}
+          actor: ${{ github.actor }}
